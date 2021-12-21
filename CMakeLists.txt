@@ -13,9 +13,9 @@ endif ()
 message("CMAKE_CXX_STANDARD: ${CMAKE_CXX_STANDARD}")
 
 if (APPLE)
-  set(CMAKE_POSITION_INDEPENDENT_CODE False)
+  set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
 else ()
-  set(CMAKE_POSITION_INDEPENDENT_CODE True)
+  set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 endif ()
 
 project(xmsgrid C CXX)
@@ -35,6 +35,11 @@ set(XMS_VERSION "5.2.0" CACHE STRING "Library Version")
 
 add_definitions(-DXMS_VERSION=\"${XMS_VERSION}\")
 
+# Do this because it doesn't work otherwise...
+if (BUILD_SHARED_LIBS AND WIN32)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif ()
+
 if (XMS_BUILD_MODE STREQUAL "CMAKE")
   if (PYTHON_TARGET_VERSION VERSION_LESS 3)
     message(FATAL_ERROR "XMS requires Python >= 3.0")
@@ -52,8 +57,11 @@ if (XMS_BUILD_MODE STREQUAL "CMAKE")
   list(APPEND EXT_LIB_DIRS ${XMSCore_LIBRARY_DIRS};${Boost_LIBRARY_DIRS})
   list(APPEND EXT_LIBS ${XMSCore_LIBRARIES};${Boost_LIBRARIES};${ZLIB_LIBRARIES})
   if (WIN32)
+    if (XMS_BUILD)
+      add_definitions(/Zc:wchar_t)  # Treat wchar_t as built-in type
+      add_definitions(/D _WIN32_WINNT=0x0501)  # Windows XP and higher
+    endif ()
     add_definitions(/D BOOST_ALL_NO_LIB)
-    add_definitions(/Zc:wchar_t)  # Treat wchar_t as built-in type
   endif ()
 elseif (XMS_BUILD_MODE STREQUAL "CONDA")
   include(${CMAKE_CURRENT_LIST_DIR}/condabuildinfo.cmake)
@@ -119,9 +127,9 @@ if (ENABLE_PYTHON)
         )
     else ()
       # New method does not require PythonLibsNew
-      find_package(Python3 REQUIRED COMPONENTS Interpreter)
+      find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
       find_package(pybind11 CONFIG REQUIRED)
-      list(APPEND EXT_LIBS pybind11::pybind11)
+      list(APPEND EXT_LIBS pybind11::pybind11 Python3::Python)
     endif ()
 endif ()
 
