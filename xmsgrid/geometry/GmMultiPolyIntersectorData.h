@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <set>
@@ -20,7 +21,7 @@ namespace xms
 {
 ////////////////////////////////////////////////////////////////////////////////
 /// \brief An intersection point of a line with a polygon.
-class ix
+class XMSGRID_EXPORT ix
 {
 public:
   /// constructor
@@ -45,7 +46,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 /// \brief Struct used by GmMultiPolyIntersector.
-struct GmMultiPolyIntersectorData
+struct XMSGRID_EXPORT GmMultiPolyIntersectorData
 {
   std::vector<Pt3d> m_points;             ///< All points used by all polygons
   std::vector<std::vector<int> > m_polys; ///< 0-based? indices into m_points to form polygons

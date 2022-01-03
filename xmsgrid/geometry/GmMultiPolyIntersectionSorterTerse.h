@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard Library Headers
 
@@ -28,7 +29,7 @@ class ix;
 //----- Classes ----------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class GmMultiPolyIntersectionSorterTerse
+class XMSGRID_EXPORT GmMultiPolyIntersectionSorterTerse
     : public GmMultiPolyIntersectionSorter {
 public:
   virtual void Sort(GmMultiPolyIntersectorData &a_data,

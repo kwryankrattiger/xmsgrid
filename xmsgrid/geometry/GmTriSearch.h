@@ -13,6 +13,7 @@
 #include <xmscore/stl/vector.h>
 #include <xmscore/misc/boost_defines.h>
 #include <xmscore/misc/DynBitset.h>
+#include <xmsgrid/xmsgrid_export.h>
 
 //----- Forward declarations ---------------------------------------------------
 
@@ -26,7 +27,7 @@ class Observer;
 //----- Structs / Classes ------------------------------------------------------
 /// \brief Spatial index for searching triangles
 /// \see GmTriSearchImpl
-class GmTriSearch
+class XMSGRID_EXPORT GmTriSearch
 {
 public:
   static BSHP<GmTriSearch> New();

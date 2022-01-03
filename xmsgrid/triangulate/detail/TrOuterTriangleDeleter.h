@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <vector>
@@ -36,7 +37,7 @@ class Observer;
 //----- Function prototypes ----------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class TrOuterTriangleDeleter
+class XMSGRID_EXPORT TrOuterTriangleDeleter
 {
 public:
   static boost::shared_ptr<TrOuterTriangleDeleter> New();

@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard Library Headers
 #include <vector>
@@ -32,9 +33,9 @@ namespace xms
 
 //----- Function prototypes ----------------------------------------------------
 
-double trArea(const Pt3d& a_pt1, const Pt3d& a_pt2, const Pt3d& a_pt3);
-void trBuildGridPolys(int rows, int cols, VecPt3d& pts, VecInt2d& polys);
-void trBuildGridTrianglePolys(int rows, int cols, VecPt3d& a_points, VecInt2d& a_polys);
+XMSGRID_EXPORT double trArea(const Pt3d& a_pt1, const Pt3d& a_pt2, const Pt3d& a_pt3);
+XMSGRID_EXPORT void trBuildGridPolys(int rows, int cols, VecPt3d& pts, VecInt2d& polys);
+XMSGRID_EXPORT void trBuildGridTrianglePolys(int rows, int cols, VecPt3d& a_points, VecInt2d& a_polys);
 
 //------------------------------------------------------------------------------
 /// \brief Faster than a % operation and we do this a lot

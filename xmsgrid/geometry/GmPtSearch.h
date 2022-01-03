@@ -12,6 +12,7 @@
 #include <xmscore/misc/boost_defines.h>
 #include <xmscore/points/ptsfwd.h>
 #include <xmscore/stl/vector.h>
+#include <xmsgrid/xmsgrid_export.h>
 
 //----- Forward declarations ---------------------------------------------------
 
@@ -23,7 +24,7 @@ namespace xms
 //----- Structs / Classes ------------------------------------------------------
 /// \brief Spatial index for searching points
 /// \see GmPtSearchImpl
-class GmPtSearch
+class XMSGRID_EXPORT GmPtSearch
 {
 public:
   static BSHP<GmPtSearch> New(bool a_2dSearch);

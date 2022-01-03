@@ -18,6 +18,7 @@
 #include <xmscore/misc/base_macros.h>
 #include <xmscore/misc/boost_defines.h>
 #include <xmscore/stl/vector.h>
+#include <xmsgrid/xmsgrid_export.h>
 
 //----- Forward declarations ---------------------------------------------------
 
@@ -36,17 +37,17 @@ class XmUGrid;
 //----- Function prototypes ----------------------------------------------------
 
 // !!!Deprecated!!!
-std::vector<Pt3d> ConvexHull(const std::vector<Pt3<double>>& a_points);
+XMSGRID_EXPORT std::vector<Pt3d> ConvexHull(const std::vector<Pt3<double>>& a_points);
 
 // !!!Deprecated!!!
-VecInt ConvexHullWithIndices(const std::vector<int>& a_points, std::shared_ptr<XmUGrid> a_ugrid);
+XMSGRID_EXPORT VecInt ConvexHullWithIndices(const std::vector<int>& a_points, std::shared_ptr<XmUGrid> a_ugrid);
 
 // !!!Deprecated!!!
-bool DoLineSegmentsCross(const std::pair<Pt3<double>, Pt3<double>>& a_segment1,
+XMSGRID_EXPORT bool DoLineSegmentsCross(const std::pair<Pt3<double>, Pt3<double>>& a_segment1,
                          const std::pair<Pt3<double>, Pt3<double>>& a_segment2);
 
 // !!!Deprecated!!!
-bool DoLineSegmentsCross(const Pt3<double>& a_segment1Point1,
+XMSGRID_EXPORT bool DoLineSegmentsCross(const Pt3<double>& a_segment1Point1,
                          const Pt3<double>& a_segment1Point2,
                          const Pt3<double>& a_segment2Point1,
                          const Pt3<double>& a_segment2Point2);

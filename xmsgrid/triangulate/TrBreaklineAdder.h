@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <vector>
@@ -26,7 +27,7 @@ class Observer;
 class TrTin;
 
 ////////////////////////////////////////////////////////////////////////////////
-class TrBreaklineAdder
+class XMSGRID_EXPORT TrBreaklineAdder
 {
 public:
   static boost::shared_ptr<TrBreaklineAdder> New();

@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <vector>
@@ -30,7 +31,7 @@ class GmMultiPolyIntersectionSorter;
 enum GmMultiPolyIntersectorQueryEnum { GMMPIQ_COVEREDBY, GMMPIQ_INTERSECTS };
 
 ////////////////////////////////////////////////////////////////////////////////
-class GmMultiPolyIntersector
+class XMSGRID_EXPORT GmMultiPolyIntersector
 {
 public:
   static boost::shared_ptr<GmMultiPolyIntersector> New(

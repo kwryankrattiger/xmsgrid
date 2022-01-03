@@ -19,6 +19,7 @@
 #include <xmscore/stl/vector.h>
 
 // 5. Shared Headers
+#include <xmsgrid/xmsgrid_export.h>
 
 // 6. Non-shared Headers
 
@@ -50,59 +51,57 @@ enum PtInOutOrOn_enum {
 //----- Global functions -------------------------------------------------------
 
 // Tolerance
-double gmComputeXyTol(const Pt3d& a_mn, const Pt3d& a_mx);
-double gmXyTol(bool a_set = false, double a_value = 1e-9);
-double gmZTol(bool a_set = false, double a_value = 1e-6);
+XMSGRID_EXPORT double gmComputeXyTol(const Pt3d& a_mn, const Pt3d& a_mx);
+XMSGRID_EXPORT double gmXyTol(bool a_set = false, double a_value = 1e-9);
+XMSGRID_EXPORT double gmZTol(bool a_set = false, double a_value = 1e-6);
 
 
 
 // Extents
-void gmAddToExtents(const Pt2d& a_pt, Pt3d& a_min, Pt3d& a_max);
-void gmAddToExtents(const Pt3d& a_pt, Pt2d& a_min, Pt2d& a_max);
-void gmAddToExtents(const Pt3d& a_pt, Pt3d& a_min, Pt3d& a_max);
+XMSGRID_EXPORT void gmAddToExtents(const Pt2d& a_pt, Pt3d& a_min, Pt3d& a_max);
+XMSGRID_EXPORT void gmAddToExtents(const Pt3d& a_pt, Pt2d& a_min, Pt2d& a_max);
+XMSGRID_EXPORT void gmAddToExtents(const Pt3d& a_pt, Pt3d& a_min, Pt3d& a_max);
 
-void gmExtents2D(const VecPt3d& a_points, Pt2d& a_min, Pt2d& a_max);
-void gmExtents2D(const VecPt3d& a_points, Pt3d& a_min, Pt3d& a_max);
-void gmExtents3D(const VecPt3d& a_points, Pt3d& a_min, Pt3d& a_max);
+XMSGRID_EXPORT void gmExtents2D(const VecPt3d& a_points, Pt2d& a_min, Pt2d& a_max);
+XMSGRID_EXPORT void gmExtents2D(const VecPt3d& a_points, Pt3d& a_min, Pt3d& a_max);
+XMSGRID_EXPORT void gmExtents3D(const VecPt3d& a_points, Pt3d& a_min, Pt3d& a_max);
 
-void gmEnvelopeOfPts(const VecPt3d& a_pts, Pt3d& a_min, Pt3d& a_max);
-
-
+XMSGRID_EXPORT void gmEnvelopeOfPts(const VecPt3d& a_pts, Pt3d& a_min, Pt3d& a_max);
 
 // Angles
-double gmAngleBetween2DVectors(double dxp, double dyp, double dxn, double dyn);
-double gmAngleBetween2DVectors(double dxp,
+XMSGRID_EXPORT double gmAngleBetween2DVectors(double dxp, double dyp, double dxn, double dyn);
+XMSGRID_EXPORT double gmAngleBetween2DVectors(double dxp,
                                double dyp,
                                double dxn,
                                double dyn,
                                double a_magn,
                                double a_magp);
-double gmAngleBetween3DVectors(const Pt3d& v1, const Pt3d& v2);
+XMSGRID_EXPORT double gmAngleBetween3DVectors(const Pt3d& v1, const Pt3d& v2);
 
-double gmAngleBetweenEdges(const Pt2d& p1, const Pt2d& p2, const Pt2d& p3);
-double gmAngleBetweenEdges(const Pt3d& p1, const Pt3d& p2, const Pt3d& p3);
-double gmComputeDeviationInDirection(const Pt3d& a_p0, const Pt3d& a_p1, const Pt3d& a_p2);
+XMSGRID_EXPORT double gmAngleBetweenEdges(const Pt2d& p1, const Pt2d& p2, const Pt2d& p3);
+XMSGRID_EXPORT double gmAngleBetweenEdges(const Pt3d& p1, const Pt3d& p2, const Pt3d& p3);
+XMSGRID_EXPORT double gmComputeDeviationInDirection(const Pt3d& a_p0, const Pt3d& a_p1, const Pt3d& a_p2);
 
-double gmBisectingAngle(const Pt3d& a_p1, const Pt3d& a_p2, const Pt3d& a_p3);
-double gmPerpendicularAngle(const Pt3d& a_pt1, const Pt3d& a_pt2);
+XMSGRID_EXPORT double gmBisectingAngle(const Pt3d& a_p1, const Pt3d& a_p2, const Pt3d& a_p3);
+XMSGRID_EXPORT double gmPerpendicularAngle(const Pt3d& a_pt1, const Pt3d& a_pt2);
 
-void gmUnitVector2DPerp(const Pt3d& p1, const Pt3d& p2, Pt3d* v);
+XMSGRID_EXPORT void gmUnitVector2DPerp(const Pt3d& p1, const Pt3d& p2, Pt3d* v);
 
 
-double gmConvertAngleToBetween0And360(double a_angle, bool a_InDegrees = true);
-void gmConvertAngleBetweenXAndNorth(double* a_angle);
+XMSGRID_EXPORT double gmConvertAngleToBetween0And360(double a_angle, bool a_InDegrees = true);
+XMSGRID_EXPORT void gmConvertAngleBetweenXAndNorth(double* a_angle);
 
-Turn_enum gmTurn(const Pt3d& a_v1, const Pt3d& a_v2, const Pt3d& a_v3, double a_angtol = 0.0017453);
-bool gmLeftTurn(const Pt2d* v1, const Pt2d* v2, const Pt2d* v3);
-bool gmLeftTurn(const Pt3d* v1, const Pt3d* v2, const Pt3d* v3);
+XMSGRID_EXPORT Turn_enum gmTurn(const Pt3d& a_v1, const Pt3d& a_v2, const Pt3d& a_v3, double a_angtol = 0.0017453);
+XMSGRID_EXPORT bool gmLeftTurn(const Pt2d* v1, const Pt2d* v2, const Pt2d* v3);
+XMSGRID_EXPORT bool gmLeftTurn(const Pt3d* v1, const Pt3d* v2, const Pt3d* v3);
 
-bool gmStrictlyLeftTurn(const Pt3d*, const Pt3d*, const Pt3d*);
+XMSGRID_EXPORT bool gmStrictlyLeftTurn(const Pt3d*, const Pt3d*, const Pt3d*);
 
 
 
 // Barycenters
-int gmBaryToCart(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3, const Pt3d* bary, Pt3d* cart);
-int gmBaryPrepare(const Pt3d* p1,
+XMSGRID_EXPORT int gmBaryToCart(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3, const Pt3d* bary, Pt3d* cart);
+XMSGRID_EXPORT int gmBaryPrepare(const Pt3d* p1,
                   const Pt3d* p2,
                   const Pt3d* p3,
                   const Pt3d* norm,
@@ -110,32 +109,32 @@ int gmBaryPrepare(const Pt3d* p1,
                   double coef[6],
                   int* dir,
                   bool flag);
-int gmCartToBary(const Pt3d* cart, const Pt3d* orig, double coef[6], int dir, Pt3d* bary);
+XMSGRID_EXPORT int gmCartToBary(const Pt3d* cart, const Pt3d* orig, double coef[6], int dir, Pt3d* bary);
 
 
 
 // Points equivalence
-bool gmEqualPointsXY(double x1, double y1, double x2, double y2);
-bool gmEqualPointsXY(double x1, double y1, double x2, double y2, double tolerance);
-bool gmEqualPointsXY(const Pt2i& point1, const Pt2i& point2);
-bool gmEqualPointsXY(const Pt2d& a_pt1, const Pt2d& a_pt2, double tol);
-bool gmEqualPointsXY(const Pt3d& a_pt1, const Pt3d& a_pt2, double tol);
-bool gmEqualPointsXYZ(double x1, double y1, double z1, double x2, double y2, double z2);
-bool gmEqualPointsXYZ(double x1,
+XMSGRID_EXPORT bool gmEqualPointsXY(double x1, double y1, double x2, double y2);
+XMSGRID_EXPORT bool gmEqualPointsXY(double x1, double y1, double x2, double y2, double tolerance);
+XMSGRID_EXPORT bool gmEqualPointsXY(const Pt2i& point1, const Pt2i& point2);
+XMSGRID_EXPORT bool gmEqualPointsXY(const Pt2d& a_pt1, const Pt2d& a_pt2, double tol);
+XMSGRID_EXPORT bool gmEqualPointsXY(const Pt3d& a_pt1, const Pt3d& a_pt2, double tol);
+XMSGRID_EXPORT bool gmEqualPointsXYZ(double x1, double y1, double z1, double x2, double y2, double z2);
+XMSGRID_EXPORT bool gmEqualPointsXYZ(double x1,
                       double y1,
                       double z1,
                       double x2,
                       double y2,
                       double z2,
                       double tolerance);
-bool gmEqualPointsXYZ(const Pt3d& pt1, const Pt3d& pt2, double tol);
+XMSGRID_EXPORT bool gmEqualPointsXYZ(const Pt3d& pt1, const Pt3d& pt2, double tol);
 
 
 
 // Vector functions
-double gmCross2D(const double& dx1, const double& dy1, const double& dx2, const double& dy2);
-double gmCross2D(const Pt3d& a_origin, const Pt3d& a_A, const Pt3d& a_B);
-void gmCross3D(const Pt3d& a_vec1, const Pt3d& a_vec2, Pt3d* a_vec3);
+XMSGRID_EXPORT double gmCross2D(const double& dx1, const double& dy1, const double& dx2, const double& dy2);
+XMSGRID_EXPORT double gmCross2D(const Pt3d& a_origin, const Pt3d& a_A, const Pt3d& a_B);
+XMSGRID_EXPORT void gmCross3D(const Pt3d& a_vec1, const Pt3d& a_vec2, Pt3d* a_vec3);
 //------------------------------------------------------------------------------
 /// \brief Perform a dot product of two vectors.
 /// \note The dot product has the geometric interpretation as the length of the
@@ -172,47 +171,44 @@ inline float gmDot3Df(const Pt3f& vec1, const Pt3f& vec2)
 {
   return (vec1.x * vec2.x + vec1.y * vec2.y + vec1.z * vec2.z);
 }
-int gmVectorAdd(double scale, const Pt3d& vec1, const Pt3d& vec2, Pt3d* sum);
-void gmVectorAverage(const Pt3d& a, const Pt3d& b, Pt3d* result);
-void gmVectorAverage(const Pt4d& a, const Pt4d& b, Pt4d* result);
-void gmVectorRotate2D(const Pt3d& in, double a_angle, Pt3d& out);
-void gmVectorSubtract(const Pt3d* vec1, const Pt3d* vec2, Pt3d* dif);
-Pt3d gmUnitVector(const Pt3d& p1, const Pt3d& p2);
-void gmComponentMagnitudes(double* a_x, double* a_y, double* a_mag, double* a_dir, bool a_tomagdir);
-Pt3d gmCreateVector(const Pt3d& a_p1, const Pt3d& a_p2);
+XMSGRID_EXPORT int gmVectorAdd(double scale, const Pt3d& vec1, const Pt3d& vec2, Pt3d* sum);
+XMSGRID_EXPORT void gmVectorAverage(const Pt3d& a, const Pt3d& b, Pt3d* result);
+XMSGRID_EXPORT void gmVectorAverage(const Pt4d& a, const Pt4d& b, Pt4d* result);
+XMSGRID_EXPORT void gmVectorRotate2D(const Pt3d& in, double a_angle, Pt3d& out);
+XMSGRID_EXPORT void gmVectorSubtract(const Pt3d* vec1, const Pt3d* vec2, Pt3d* dif);
+XMSGRID_EXPORT Pt3d gmUnitVector(const Pt3d& p1, const Pt3d& p2);
+XMSGRID_EXPORT void gmComponentMagnitudes(double* a_x, double* a_y, double* a_mag, double* a_dir, bool a_tomagdir);
+XMSGRID_EXPORT Pt3d gmCreateVector(const Pt3d& a_p1, const Pt3d& a_p2);
 
 
 
 // Polygon bounds
 template <typename T>
-int gmPointInPolygon2D(const T* theverts,
-                       const size_t numverts,
-                       const double xpt,
-                       const double ypt,
+int gmPointInPolygon2D(const T* theverts, const size_t numverts, const double xpt, const double ypt,
                        const double tol);
-int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt2i a_pt);
-int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt2d a_pt);
-int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt3d a_pt);
-int gmPointInPolygon2D(const Pt3d* a_verts, size_t a_num, double a_x, double a_y);
-int gmPointInPolygon2D(const Pt3d* a_verts, size_t a_num, Pt3d a_pt);
-int gmPointInPolygon2D(const VecPt3d& a_verts, const Pt3d& a_pt);
+XMSGRID_EXPORT int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt2i a_pt);
+XMSGRID_EXPORT int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt2d a_pt);
+XMSGRID_EXPORT int gmPointInPolygon2D(const Pt2i* a_verts, size_t a_num, Pt3d a_pt);
+XMSGRID_EXPORT int gmPointInPolygon2D(const Pt3d* a_verts, size_t a_num, double a_x, double a_y);
+XMSGRID_EXPORT int gmPointInPolygon2D(const Pt3d* a_verts, size_t a_num, Pt3d a_pt);
+XMSGRID_EXPORT int gmPointInPolygon2D(const VecPt3d& a_verts, const Pt3d& a_pt);
 
-int gmPointInPolygon3DWithTol(const Pt3d& pt,
+XMSGRID_EXPORT int gmPointInPolygon3DWithTol(const Pt3d& pt,
                               int nvtx,
                               const Pt3d* vertex,
                               const int* poly,
                               const Pt3d& nrm,
                               double tol);
-bool gmPointsInRadiusXY(const Pt3d& pt1, const Pt3d& pt2, double radius);
-bool gmPointsInRadiusXY(double x1, double y1, double x2, double y2, double radius);
-PtInOutOrOn_enum gmPtInCircumcircle(const Pt3d& pt, Pt3d circumcirclePts[3]);
-bool gmPointInOrOnBox2d(const Pt3d& a_bMin, const Pt3d& a_bMax, const Pt3d& a_pt);
+XMSGRID_EXPORT bool gmPointsInRadiusXY(const Pt3d& pt1, const Pt3d& pt2, double radius);
+XMSGRID_EXPORT bool gmPointsInRadiusXY(double x1, double y1, double x2, double y2, double radius);
+XMSGRID_EXPORT PtInOutOrOn_enum gmPtInCircumcircle(const Pt3d& pt, Pt3d circumcirclePts[3]);
+XMSGRID_EXPORT bool gmPointInOrOnBox2d(const Pt3d& a_bMin, const Pt3d& a_bMax, const Pt3d& a_pt);
 
-bool gmPointInRect(const Pt2i& thepoint, const Pt2i& tl, const Pt2i& br);
-bool gmPointInRect(const Pt3d& a_pt, const Pt3d& a_tl, const Pt3d& a_br);
-bool gmPointInRect2(const Pt3d& thepoint, double etop, double ebottom, double eleft, double eright);
-bool gmPointInTriangle(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3, double x, double y);
-bool gmPointInTriangleWithTol(const Pt3d* p1,
+XMSGRID_EXPORT bool gmPointInRect(const Pt2i& thepoint, const Pt2i& tl, const Pt2i& br);
+XMSGRID_EXPORT bool gmPointInRect(const Pt3d& a_pt, const Pt3d& a_tl, const Pt3d& a_br);
+XMSGRID_EXPORT bool gmPointInRect2(const Pt3d& thepoint, double etop, double ebottom, double eleft, double eright);
+XMSGRID_EXPORT bool gmPointInTriangle(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3, double x, double y);
+XMSGRID_EXPORT bool gmPointInTriangleWithTol(const Pt3d* p1,
                               const Pt3d* p2,
                               const Pt3d* p3,
                               double x,
@@ -237,28 +233,28 @@ bool gmInsideInner(T a_insides, U a_centroid)
 
 
 // Distance
-double gm2DDistanceToLineSegment(const Pt3d&, const Pt3d&, const Pt3d&);
-double gm2DDistanceToLineSegmentWithTol(const Pt3d* pt1,
+XMSGRID_EXPORT double gm2DDistanceToLineSegment(const Pt3d&, const Pt3d&, const Pt3d&);
+XMSGRID_EXPORT double gm2DDistanceToLineSegmentWithTol(const Pt3d* pt1,
                                         const Pt3d* pt2,
                                         double x,
                                         double y,
                                         double tol);
-double gm2DDistanceToLineWithTol(const Pt3d* a_pt1,
+XMSGRID_EXPORT double gm2DDistanceToLineWithTol(const Pt3d* a_pt1,
                                  const Pt3d* a_pt2,
                                  double a_x,
                                  double a_y,
                                  double a_tol);
 
-double gmXyDistance(const Pt3d& pt1, const Pt3d& pt2);
-double gmXyDistance(double x1, double y1, double x2, double y2);
-double gmXyDistanceSquared(const Pt3d& pt1, const Pt3d& pt2);
-double gmXYZDistanceBetweenPoints(const Pt4d& p1, const Pt4d& p2);
-double gmXYZDistanceBetweenPoints(const Pt3d& p1, const Pt3d& p2);
-double gmXYZDistanceSquared(const Pt3d& p1, const Pt3d& p2);
+XMSGRID_EXPORT double gmXyDistance(const Pt3d& pt1, const Pt3d& pt2);
+XMSGRID_EXPORT double gmXyDistance(double x1, double y1, double x2, double y2);
+XMSGRID_EXPORT double gmXyDistanceSquared(const Pt3d& pt1, const Pt3d& pt2);
+XMSGRID_EXPORT double gmXYZDistanceBetweenPoints(const Pt4d& p1, const Pt4d& p2);
+XMSGRID_EXPORT double gmXYZDistanceBetweenPoints(const Pt3d& p1, const Pt3d& p2);
+XMSGRID_EXPORT double gmXYZDistanceSquared(const Pt3d& p1, const Pt3d& p2);
 
-double gmGreatCircleDistanceMeters(const Pt2d& a_pt1, const Pt2d& a_pt2);
+XMSGRID_EXPORT double gmGreatCircleDistanceMeters(const Pt2d& a_pt1, const Pt2d& a_pt2);
 
-double gmMinDistBetweenLinesWithTol(const Pt3d* p0,
+XMSGRID_EXPORT double gmMinDistBetweenLinesWithTol(const Pt3d* p0,
                                     const Pt3d* p1,
                                     const Pt3d* q0,
                                     const Pt3d* q1,
@@ -267,7 +263,7 @@ double gmMinDistBetweenLinesWithTol(const Pt3d* p0,
                                     double* t,
                                     double* s,
                                     double tol);
-double gmDistanceFromPointToPlane(const Pt3d& pt1,
+XMSGRID_EXPORT double gmDistanceFromPointToPlane(const Pt3d& pt1,
                                   const Pt3d& pt2,
                                   const Pt3d& pt3,
                                   const Pt3d& thePoint);
@@ -275,8 +271,8 @@ double gmDistanceFromPointToPlane(const Pt3d& pt1,
 
 
 // Clipping
-void gmClipNDCPoly(int* npts, Pt4d* pts);
-bool gmClipMpoint3PolyToRect(Pt3d pts[],
+XMSGRID_EXPORT void gmClipNDCPoly(int* npts, Pt4d* pts);
+XMSGRID_EXPORT bool gmClipMpoint3PolyToRect(Pt3d pts[],
                              int n,
                              Pt3d* outpts[],
                              int* outCount,
@@ -284,9 +280,9 @@ bool gmClipMpoint3PolyToRect(Pt3d pts[],
                              double xMin,
                              double yMax,
                              double yMin);
-int gmComputeClipCodes(const Pt4d& node, double BC[6], int* OutC);
-int gmComputeClipCodes2(double x, double y, double minx, double maxx, double miny, double maxy);
-int gmClipLine(double* x1,
+XMSGRID_EXPORT int gmComputeClipCodes(const Pt4d& node, double BC[6], int* OutC);
+XMSGRID_EXPORT int gmComputeClipCodes2(double x, double y, double minx, double maxx, double miny, double maxy);
+XMSGRID_EXPORT int gmClipLine(double* x1,
                double* y1,
                double* x2,
                double* y2,
@@ -300,7 +296,7 @@ int gmClipLine(double* x1,
 
 
 // Intersection
-bool gmIntersectLineSegmentsWithTol(const Pt3d& one1,
+XMSGRID_EXPORT bool gmIntersectLineSegmentsWithTol(const Pt3d& one1,
                                     const Pt3d& one2,
                                     const Pt3d& two1,
                                     const Pt3d& two2,
@@ -309,7 +305,7 @@ bool gmIntersectLineSegmentsWithTol(const Pt3d& one1,
                                     double* zi1,
                                     double* zi2,
                                     double tol);
-bool gmIntersectLineSegmentsNoTol(const Pt3d& one1,
+XMSGRID_EXPORT bool gmIntersectLineSegmentsNoTol(const Pt3d& one1,
                                   const Pt3d& one2,
                                   const Pt3d& two1,
                                   const Pt3d& two2,
@@ -345,36 +341,36 @@ inline bool gmIntersectLineSegments(const Pt3d& one1,
 {
   return gmIntersectLineSegmentsWithTol(one1, one2, two1, two2, xi, yi, zi1, zi2, gmXyTol());
 }
-bool gmIntersectSegmentWithLine(const Pt2d& p1,
+XMSGRID_EXPORT bool gmIntersectSegmentWithLine(const Pt2d& p1,
                                 const Pt2d& p2,
                                 const Pt2d& l1,
                                 const Pt2d& l2,
                                 Pt2d* inter);
-bool gmIntersectSegmentWithLine(const Pt2d& p1,
+XMSGRID_EXPORT bool gmIntersectSegmentWithLine(const Pt2d& p1,
                                 const Pt2d& p2,
                                 const Pt2d& l1,
                                 const Pt2d& l2,
                                 Pt2d* inter,
                                 double tol);
-bool gmIntersectSegmentWithLine(const Pt3d& p1,
+XMSGRID_EXPORT bool gmIntersectSegmentWithLine(const Pt3d& p1,
                                 const Pt3d& p2,
                                 const Pt3d& l1,
                                 const Pt3d& l2,
                                 Pt3d* inter);
-bool gmIntersectSegmentWithLine(const Pt3d& p1,
+XMSGRID_EXPORT bool gmIntersectSegmentWithLine(const Pt3d& p1,
                                 const Pt3d& p2,
                                 const Pt3d& l1,
                                 const Pt3d& l2,
                                 Pt3d* inter,
                                 double tol);
-bool gmIntersectLines(const Pt3d& one1,
+XMSGRID_EXPORT bool gmIntersectLines(const Pt3d& one1,
                       const Pt3d& one2,
                       const Pt3d& two1,
                       const Pt3d& two2,
                       double* xi,
                       double* yi,
                       double tol);
-bool gmIntersectLines(const Pt3d& one1,
+XMSGRID_EXPORT bool gmIntersectLines(const Pt3d& one1,
                       const Pt3d& one2,
                       const Pt3d& two1,
                       const Pt3d& two2,
@@ -382,7 +378,7 @@ bool gmIntersectLines(const Pt3d& one1,
                       double* yi,
                       double* zi,
                       double tol);
-bool gmIntersectLines(const Pt3d& one1,
+XMSGRID_EXPORT bool gmIntersectLines(const Pt3d& one1,
                       const Pt3d& one2,
                       const Pt3d& two1,
                       const Pt3d& two2,
@@ -392,13 +388,13 @@ bool gmIntersectLines(const Pt3d& one1,
                       double& onet,
                       double& twot,
                       double tol);
-bool gmLinesIntersect(const Pt3d& one1, const Pt3d& one2, const Pt3d& two1, const Pt3d& two2);
-bool gmLinesCross(const Pt3d& a_segment1Point1,
+XMSGRID_EXPORT bool gmLinesIntersect(const Pt3d& one1, const Pt3d& one2, const Pt3d& two1, const Pt3d& two2);
+XMSGRID_EXPORT bool gmLinesCross(const Pt3d& a_segment1Point1,
                   const Pt3d& a_segment1Point2,
                   const Pt3d& a_segment2Point1,
                   const Pt3d& a_segment2Point2);
 
-bool gmIntersectLineWithPln(const Pt3d& p0,
+XMSGRID_EXPORT bool gmIntersectLineWithPln(const Pt3d& p0,
                            const Pt3d& p1,
                            double a,
                            double b,
@@ -406,19 +402,19 @@ bool gmIntersectLineWithPln(const Pt3d& p0,
                            double d,
                            Pt3d* point);
 
-int gmIntersectTriangleAndLineSegment(const Pt3d& a_pt1,
+XMSGRID_EXPORT int gmIntersectTriangleAndLineSegment(const Pt3d& a_pt1,
                                       const Pt3d& a_pt2,
                                       const Pt3d& a_t0,
                                       const Pt3d& a_t1,
                                       const Pt3d& a_t2,
                                       Pt3d& a_IntersectPt);
-bool gmLineAndTriangleIntersect(const Pt3d& origin,
+XMSGRID_EXPORT bool gmLineAndTriangleIntersect(const Pt3d& origin,
                                 const Pt3d& vert1,
                                 const Pt3d& v30,
                                 const Pt3d& v31,
                                 const Pt3d& v32,
                                 Pt3d* theisect = NULL);
-bool gmIntersectLineWithTriangle(const Pt3d& p0,
+XMSGRID_EXPORT bool gmIntersectLineWithTriangle(const Pt3d& p0,
                                 const Pt3d& p1,
                                 const Pt3d& v0,
                                 const Pt3d& v1,
@@ -426,13 +422,13 @@ bool gmIntersectLineWithTriangle(const Pt3d& p0,
                                 double* dist,
                                 Pt3d* point);
 
-void gmSphereLineIntersection(const Pt3d& a_l1,
+XMSGRID_EXPORT void gmSphereLineIntersection(const Pt3d& a_l1,
                               const Pt3d& a_l2,
                               const Pt3d& a_sc,
                               double a_r,
                               VecPt3d& a_pts);
 
-int gmIntersectPlnWithPolWithTol(const double pln[4],
+XMSGRID_EXPORT int gmIntersectPlnWithPolWithTol(const double pln[4],
                                  int nnodes,
                                  Pt3d* poly,
                                  const double tripln[4],
@@ -442,7 +438,7 @@ int gmIntersectPlnWithPolWithTol(const double pln[4],
 
 
 // Testing if points are in/on lines and planes
-int gmClassifyPointFromPlane(const Pt3d& point1,
+XMSGRID_EXPORT int gmClassifyPointFromPlane(const Pt3d& point1,
                              const Pt3d& point2,
                              const Pt3d& point3,
                              const Pt3d& oppositepoint,
@@ -450,42 +446,42 @@ int gmClassifyPointFromPlane(const Pt3d& point1,
                              double y,
                              double z,
                              double tolerance);
-int gmClassifyPointFromPlane(double a,
+XMSGRID_EXPORT int gmClassifyPointFromPlane(double a,
                              double b,
                              double c,
                              double d,
                              const Pt3d& oppositepoint,
                              const Pt3d& pt,
                              double tolerance);
-bool gmOnLineAndBetweenEndpoints(const Pt3d* p1, const Pt3d* p2, const double x, const double y);
-bool gmOnLineAndBetweenEndpointsWithTol(const Pt3d& a_pt1,
+XMSGRID_EXPORT bool gmOnLineAndBetweenEndpoints(const Pt3d* p1, const Pt3d* p2, const double x, const double y);
+XMSGRID_EXPORT bool gmOnLineAndBetweenEndpointsWithTol(const Pt3d& a_pt1,
                                         const Pt3d& a_pt2,
                                         const double a_x,
                                         const double a_y,
                                         double a_tol);
-bool gmMiddleThird(const Pt3d* v1, const Pt3d* v2, const Pt3d* v3);
-bool gmMiddleThirdWithTol(const Pt3d& v1, const Pt3d& v2, const Pt3d& v3, double tol);
+XMSGRID_EXPORT bool gmMiddleThird(const Pt3d* v1, const Pt3d* v2, const Pt3d* v3);
+XMSGRID_EXPORT bool gmMiddleThirdWithTol(const Pt3d& v1, const Pt3d& v2, const Pt3d& v3, double tol);
 
-bool gmOnLine(const Pt3d* p1, const Pt3d* p2, const double x, const double y);
-bool gmOnLineWithTol(const Pt3d& p1,
+XMSGRID_EXPORT bool gmOnLine(const Pt3d* p1, const Pt3d* p2, const double x, const double y);
+XMSGRID_EXPORT bool gmOnLineWithTol(const Pt3d& p1,
                      const Pt3d& p2,
                      const double x,
                      const double y,
                      const double tol);
 
-bool gmInsideOrOnLine(const Pt3d* p1,
+XMSGRID_EXPORT bool gmInsideOrOnLine(const Pt3d* p1,
                       const Pt3d* p2,
                       const Pt3d* oppositepoint,
                       const double x,
                       const double y);
-bool gmInsideOrOnLineWithTol(const Pt3d* p1,
+XMSGRID_EXPORT bool gmInsideOrOnLineWithTol(const Pt3d* p1,
                              const Pt3d* p2,
                              const Pt3d* inpoint,
                              const double x,
                              const double y,
                              const double tol,
                              double* dist = NULL);
-bool gmInsideOfLineWithTol(const Pt3d& a_vertex1,
+XMSGRID_EXPORT bool gmInsideOfLineWithTol(const Pt3d& a_vertex1,
                            const Pt3d& a_vertex2,
                            const Pt3d& a_oppositevertex,
                            const double a_x,
@@ -495,12 +491,12 @@ bool gmInsideOfLineWithTol(const Pt3d& a_vertex1,
 
 
 // Finding points on lines
-double gmNearestPointOnLineSegment2D(const Pt3d& p1, const Pt3d& p2, const Pt3d& q, Pt3d* thepoint);
-double gmPtDistanceAlongSegment(const Pt3d& a_pt1,
+XMSGRID_EXPORT double gmNearestPointOnLineSegment2D(const Pt3d& p1, const Pt3d& p2, const Pt3d& q, Pt3d* thepoint);
+XMSGRID_EXPORT double gmPtDistanceAlongSegment(const Pt3d& a_pt1,
                                 const Pt3d& a_pt2,
                                 const Pt3d& a_pt,
                                 const double a_tol);
-double gmFindClosestPtOnSegment(const Pt3d& a_pt1,
+XMSGRID_EXPORT double gmFindClosestPtOnSegment(const Pt3d& a_pt1,
                                 const Pt3d& a_pt2,
                                 const Pt3d& a_pt,
                                 Pt3d& a_newpt,
@@ -543,14 +539,14 @@ double gmFindClosestPtOnSegment(const T& pt1,
   }
   return t;
 } // gmFindClosestPtOnSegment
-double gmFindClosestPtOnSegment2D(const Pt3d& pt1,
+XMSGRID_EXPORT double gmFindClosestPtOnSegment2D(const Pt3d& pt1,
                                   const Pt3d& pt2,
                                   const Pt3d& pt,
                                   double dx,
                                   double dy,
                                   double mag2,
                                   Pt3d* newpt);
-double gmFindClosestPtOnSegment3D(const Pt3d& pt1, const Pt3d& pt2, const Pt3d& pt, Pt3d* newpt);
+XMSGRID_EXPORT double gmFindClosestPtOnSegment3D(const Pt3d& pt1, const Pt3d& pt2, const Pt3d& pt, Pt3d* newpt);
 
 //------------------------------------------------------------------------------
 /// \brief Find the distance along a segment to a given point. Distance is a
@@ -600,41 +596,41 @@ double gmPtDistanceAlongSegment(const T& pt1,
 
 
 // Vertex ordering
-bool gmCounterClockwiseTri(const Pt3d& vtx0, const Pt3d& vtx1, const Pt3d& vtx2);
-bool gmCounterClockwiseQuad(const Pt3d& da1, const Pt3d& db1, const Pt3d& da2, const Pt3d& db2);
+XMSGRID_EXPORT bool gmCounterClockwiseTri(const Pt3d& vtx0, const Pt3d& vtx1, const Pt3d& vtx2);
+XMSGRID_EXPORT bool gmCounterClockwiseQuad(const Pt3d& da1, const Pt3d& db1, const Pt3d& da2, const Pt3d& db2);
 
-void gmMakePolygonClockwise(Pt2i* pts, int numpts);
-void gmMakePolygonClockwise(Pt3d* pts, int numpts);
+XMSGRID_EXPORT void gmMakePolygonClockwise(Pt2i* pts, int numpts);
+XMSGRID_EXPORT void gmMakePolygonClockwise(Pt3d* pts, int numpts);
 
-void gmMakePolygonCounterclockwise(Pt2i* pts, int numpts);
-void gmMakePolygonCounterclockwise(Pt3d* pts, int numpts);
-void gmOrderPointsCounterclockwise(const VecPt3d& a_pts, VecInt& a_ccwOrder, int a_startindex = 0);
-void gmOrderPointsCounterclockwise(VecPt3d& a_pts);
+XMSGRID_EXPORT void gmMakePolygonCounterclockwise(Pt2i* pts, int numpts);
+XMSGRID_EXPORT void gmMakePolygonCounterclockwise(Pt3d* pts, int numpts);
+XMSGRID_EXPORT void gmOrderPointsCounterclockwise(const VecPt3d& a_pts, VecInt& a_ccwOrder, int a_startindex = 0);
+XMSGRID_EXPORT void gmOrderPointsCounterclockwise(VecPt3d& a_pts);
 
 
 // Planes
-Pt3f gmComputePlaneNormal(const Pt3f& point1, const Pt3f& point2, const Pt3f& point3);
-Pt3d gmComputePlaneNormal(const Pt3d& point1, const Pt3d& point2, const Pt3d& point3);
-Pt3d gmComputePlaneNormal(const Pt4d& point1, const Pt4d& point2, const Pt4d& point3);
+XMSGRID_EXPORT Pt3f gmComputePlaneNormal(const Pt3f& point1, const Pt3f& point2, const Pt3f& point3);
+XMSGRID_EXPORT Pt3d gmComputePlaneNormal(const Pt3d& point1, const Pt3d& point2, const Pt3d& point3);
+XMSGRID_EXPORT Pt3d gmComputePlaneNormal(const Pt4d& point1, const Pt4d& point2, const Pt4d& point3);
 
-Pt3f gmComputeUnitPlaneNormal(const Pt3f& pt1, const Pt3f& pt2, const Pt3f& pt3);
-Pt3d gmComputeUnitPlaneNormal(const Pt3d& pt1, const Pt3d& pt2, const Pt3d& pt3);
+XMSGRID_EXPORT Pt3f gmComputeUnitPlaneNormal(const Pt3f& pt1, const Pt3f& pt2, const Pt3f& pt3);
+XMSGRID_EXPORT Pt3d gmComputeUnitPlaneNormal(const Pt3d& pt1, const Pt3d& pt2, const Pt3d& pt3);
 
-void gmCalculatePlaneCoeffs(const Pt3d& point1,
+XMSGRID_EXPORT void gmCalculatePlaneCoeffs(const Pt3d& point1,
                             const Pt3d& point2,
                             const Pt3d& point3,
                             double* a,
                             double* b,
                             double* c,
                             double* d);
-void gmCalculatePlaneCoefficients(const Pt3d* p1,
+XMSGRID_EXPORT void gmCalculatePlaneCoefficients(const Pt3d* p1,
                                   const Pt3d* p2,
                                   const Pt3d* p3,
                                   double* a,
                                   double* b,
                                   double* c,
                                   double* d);
-void gmCalculatePlaneCoeffs(const Pt3d* p1,
+XMSGRID_EXPORT void gmCalculatePlaneCoeffs(const Pt3d* p1,
                             const Pt3d* p2,
                             const Pt3d* p3,
                             double* a,
@@ -642,28 +638,28 @@ void gmCalculatePlaneCoeffs(const Pt3d* p1,
                             double* c,
                             double* d,
                             double tol = XM_ZERO_TOL);
-void gmCalculateNormalizedPlaneCoefficients(const Pt3d& p1,
+XMSGRID_EXPORT void gmCalculateNormalizedPlaneCoefficients(const Pt3d& p1,
                                             const Pt3d& p2,
                                             const Pt3d& p3,
                                             double* a,
                                             double* b,
                                             double* c,
                                             double* d);
-void gmCalculateNormalizedPlaneCoefficients(const Pt3d* p1,
+XMSGRID_EXPORT void gmCalculateNormalizedPlaneCoefficients(const Pt3d* p1,
                                             const Pt3d* p2,
                                             const Pt3d* p3,
                                             double* a,
                                             double* b,
                                             double* c,
                                             double* d);
-void gmCalculatePointsFromPlane(Pt3d* p1,
+XMSGRID_EXPORT void gmCalculatePointsFromPlane(Pt3d* p1,
                                 Pt3d* p2,
                                 Pt3d* p3,
                                 double a,
                                 double b,
                                 double c,
                                 double d);
-double gmCalculateZFromPlaneCoefficients(double x,
+XMSGRID_EXPORT double gmCalculateZFromPlaneCoefficients(double x,
                                          double y,
                                          double a,
                                          double b,
@@ -672,13 +668,13 @@ double gmCalculateZFromPlaneCoefficients(double x,
 
 
 // Interpolation/Extrapolation
-Pt3d gmInterpolateMpoint3(const Pt3d& p1, const Pt3d& p2);
-double* gmDistributeValues(const double* in, int nin, int nout, double bias);
-Pt3d* gmLinearSubdivideLine(const Pt3d& endpt1, const Pt3d& endpt2, int numdiv);
+XMSGRID_EXPORT Pt3d gmInterpolateMpoint3(const Pt3d& p1, const Pt3d& p2);
+XMSGRID_EXPORT double* gmDistributeValues(const double* in, int nin, int nout, double bias);
+XMSGRID_EXPORT Pt3d* gmLinearSubdivideLine(const Pt3d& endpt1, const Pt3d& endpt2, int numdiv);
 
 
-void gmExtrapolatePoints(const Pt3d*, const Pt3d*, Pt3d*, double*, int, int);
-void gmExtrapolatePointsWithTol(const Pt3d* col1,
+XMSGRID_EXPORT void gmExtrapolatePoints(const Pt3d*, const Pt3d*, Pt3d*, double*, int, int);
+XMSGRID_EXPORT void gmExtrapolatePointsWithTol(const Pt3d* col1,
                                 const Pt3d* col2,
                                 Pt3d* newcol,
                                 double* pcnt,
@@ -688,15 +684,15 @@ void gmExtrapolatePointsWithTol(const Pt3d* col1,
 
 
 // Normalization
-void gmNormalizeXYZ(const Pt3d& vect, Pt3d* norm);
-void gmNormalizeXYZ(const Pt3f& vect, Pt3f* norm);
-double gmNormalizeXYZWithMag(const Pt3d& vect, Pt3d* norm);
-int gmNormalizeXYWithMag(const Pt2d& vect, Pt2d* norm, double* magvec);
+XMSGRID_EXPORT void gmNormalizeXYZ(const Pt3d& vect, Pt3d* norm);
+XMSGRID_EXPORT void gmNormalizeXYZ(const Pt3f& vect, Pt3f* norm);
+XMSGRID_EXPORT double gmNormalizeXYZWithMag(const Pt3d& vect, Pt3d* norm);
+XMSGRID_EXPORT int gmNormalizeXYWithMag(const Pt2d& vect, Pt2d* norm, double* magvec);
 
 
 // Area and Volume
-double gmPolygonArea(const Pt2i* points, size_t npoints);
-double gmPolygonArea(const Pt3d* pts, size_t npoints);
+XMSGRID_EXPORT double gmPolygonArea(const Pt2i* points, size_t npoints);
+XMSGRID_EXPORT double gmPolygonArea(const Pt3d* pts, size_t npoints);
 template <class PointIter>
 double gmPolygonArea(PointIter a_begin, PointIter a_end);
 //------------------------------------------------------------------------------
@@ -742,7 +738,7 @@ double gmPolygonArea(PointIter a_begin, PointIter a_end)
   area /= 2.0;
   return (area);
 } // gmPolygonArea
-double gmTetrahedronVolumeMpoint3(const Pt3d& point1,
+XMSGRID_EXPORT double gmTetrahedronVolumeMpoint3(const Pt3d& point1,
                                   const Pt3d& point2,
                                   const Pt3d& point3,
                                   const Pt3d& point4,
@@ -750,15 +746,15 @@ double gmTetrahedronVolumeMpoint3(const Pt3d& point1,
 
 
 // Projections
-Pt3d gmProjectVectorToPlane(const Pt3d& vector, int plane);
-int gmProjectTriangleToPln(const Pt3d& v0, const Pt3d& v1, const Pt3d& v2);
+XMSGRID_EXPORT Pt3d gmProjectVectorToPlane(const Pt3d& vector, int plane);
+XMSGRID_EXPORT int gmProjectTriangleToPln(const Pt3d& v0, const Pt3d& v1, const Pt3d& v2);
 
 
 
 // Colinear and coplanar
-bool gmColinear(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3);
-bool gmColinearWithTol(const Pt3d& p1, const Pt3d& p2, const Pt3d& p3, const double tol);
-bool gmCoplanarWithTol(const Pt3d& v1,
+XMSGRID_EXPORT bool gmColinear(const Pt3d* p1, const Pt3d* p2, const Pt3d* p3);
+XMSGRID_EXPORT bool gmColinearWithTol(const Pt3d& p1, const Pt3d& p2, const Pt3d& p3, const double tol);
+XMSGRID_EXPORT bool gmCoplanarWithTol(const Pt3d& v1,
                        const Pt3d& v2,
                        const Pt3d& v3,
                        const Pt3d& v4,
@@ -766,13 +762,13 @@ bool gmCoplanarWithTol(const Pt3d& v1,
 
 
 // Circumscription
-bool gmCircumcircle(const Pt3d* pt1,
+XMSGRID_EXPORT bool gmCircumcircle(const Pt3d* pt1,
                     const Pt3d* pt2,
                     const Pt3d* pt3,
                     double* xc,
                     double* yc,
                     double* r2);
-bool gmCircumcircleWithTol(const Pt3d* pt1,
+XMSGRID_EXPORT bool gmCircumcircleWithTol(const Pt3d* pt1,
                            const Pt3d* pt2,
                            const Pt3d* pt3,
                            double* xc,
@@ -782,10 +778,10 @@ bool gmCircumcircleWithTol(const Pt3d* pt1,
 
 
 // Utility functions
-VecPt3d gmArrayToVecPt3d(double* a_array, int a_size);
-int gmThreeEqualZSWithTol(double z1, double z2, double z3, double tol);
-void gmSplitPtVector(const VecPt3d& a_pt, VecDbl& a_x, VecDbl& a_y, VecDbl& a_z);
-void gmRemoveAdjacentDuplicatePoints2D(VecPt3d& a_pts, double a_tol);
+XMSGRID_EXPORT VecPt3d gmArrayToVecPt3d(double* a_array, int a_size);
+XMSGRID_EXPORT int gmThreeEqualZSWithTol(double z1, double z2, double z3, double tol);
+XMSGRID_EXPORT void gmSplitPtVector(const VecPt3d& a_pt, VecDbl& a_x, VecDbl& a_y, VecDbl& a_z);
+XMSGRID_EXPORT void gmRemoveAdjacentDuplicatePoints2D(VecPt3d& a_pts, double a_tol);
 //------------------------------------------------------------------------------
 /// \brief Find the minimum and maximum value in an array of values.
 /// \param a_vector: The array to search.
@@ -813,31 +809,31 @@ void gmVectorMaxMin(const T* a_vector, int a_size, T* a_max, T* a_min)
 
 
 // Misc.
-bool gmBoxesOverlap2d(const Pt3d& a_b1Min,
+XMSGRID_EXPORT bool gmBoxesOverlap2d(const Pt3d& a_b1Min,
                       const Pt3d& a_b1Max,
                       const Pt3d& a_b2Min,
                       const Pt3d& a_b2Max);
-int gmBoxOverlap(const Pt3d& min1, const Pt3d& max1, const Pt3d& min2, const Pt3d& max2);
+XMSGRID_EXPORT int gmBoxOverlap(const Pt3d& min1, const Pt3d& max1, const Pt3d& min2, const Pt3d& max2);
 
-bool gmComputeLineEquation(const Pt3d& pt1,
+XMSGRID_EXPORT bool gmComputeLineEquation(const Pt3d& pt1,
                            const Pt3d& pt2,
                            double& a,
                            double& b,
                            double& c,
                            double tol);
-Pt3d gmComputeCentroid(const VecPt3d& a_points);
-Pt3d gmComputePolygonCentroid(const VecPt3d& pts);
+XMSGRID_EXPORT Pt3d gmComputeCentroid(const VecPt3d& a_points);
+XMSGRID_EXPORT Pt3d gmComputePolygonCentroid(const VecPt3d& pts);
 
-double gmMiddleZ(const VecPt3d& a_points);
+XMSGRID_EXPORT double gmMiddleZ(const VecPt3d& a_points);
 
-bool gmQuadToTriAreaCheck(const Pt3d& da1, const Pt3d& db1, const Pt3d& da2, const Pt3d& db2);
+XMSGRID_EXPORT bool gmQuadToTriAreaCheck(const Pt3d& da1, const Pt3d& db1, const Pt3d& da2, const Pt3d& db2);
 
-void gmGetConvexHull(const VecPt3d& a_pts, VecPt3d& a_hull, bool a_includeOn = false);
+XMSGRID_EXPORT void gmGetConvexHull(const VecPt3d& a_pts, VecPt3d& a_hull, bool a_includeOn = false);
 
-double gmCalculateCelerity(double period, double depth, double gravity);
-double gmCalculateWavelength(double period, double depth, double gravity);
+XMSGRID_EXPORT double gmCalculateCelerity(double period, double depth, double gravity);
+XMSGRID_EXPORT double gmCalculateWavelength(double period, double depth, double gravity);
 
-double gmMetersToDecimalDegrees(const double a_meters, const double a_latitude);
-double gmDecimalDegreesToMeters(const double a_degrees, const double a_latitude);
+XMSGRID_EXPORT double gmMetersToDecimalDegrees(const double a_meters, const double a_latitude);
+XMSGRID_EXPORT double gmDecimalDegreesToMeters(const double a_degrees, const double a_latitude);
 
 } // namespace xms

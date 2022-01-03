@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.2)
+cmake_minimum_required(VERSION 3.12.2)
 cmake_policy(SET CMP0015 NEW) # Link Directory Pathing
 set(CMAKE_DEBUG_POSTFIX _d)
 
@@ -21,6 +21,7 @@ endif ()
 project(xmsgrid C CXX)
 
 include(GNUInstallDirs)
+include(GenerateExportHeader)
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Enable/Disable building shared libraries")
 set(BUILD_TESTING OFF CACHE BOOL "Enable/Disable testing")
@@ -34,11 +35,6 @@ set(XMS_TEST_PATH ${PROJECT_SOURCE_DIR}/test_files/ CACHE PATH "Path to test fil
 set(XMS_VERSION "5.2.0" CACHE STRING "Library Version")
 
 add_definitions(-DXMS_VERSION=\"${XMS_VERSION}\")
-
-# Do this because it doesn't work otherwise...
-if (BUILD_SHARED_LIBS AND WIN32)
-  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-endif ()
 
 if (XMS_BUILD_MODE STREQUAL "CMAKE")
   if (PYTHON_TARGET_VERSION VERSION_LESS 3)
@@ -279,6 +275,14 @@ target_link_libraries(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   ${CMAKE_THREAD_LIBS_INIT}
 )
+generate_export_header(${PROJECT_NAME} EXPORT_FILE_NAME xmsgrid/xmsgrid_export.h)
+target_include_directories(${PROJECT_NAME}
+  PUBLIC
+    $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+install(FILES ${PROJECT_BINARY_DIR}/xmsgrid/xmsgrid_export.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xmsgrid
+  )
 if (UNIX AND NOT APPLE)
     target_link_libraries(${PROJECT_NAME} rt)
 endif ()
