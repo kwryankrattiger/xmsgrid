@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <vector>
@@ -30,7 +31,7 @@ namespace xms
 ////////////////////////////////////////////////////////////////////////////////
 /// \brief Interface to a boost::geometry::polygon class
 /// \see GmPolygonImpl
-class GmPolygon
+class XMSGRID_EXPORT GmPolygon
 {
 public:
   static BSHP<GmPolygon> New();

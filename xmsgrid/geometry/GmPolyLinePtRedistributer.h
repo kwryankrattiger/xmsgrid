@@ -7,6 +7,7 @@
 #pragma once
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 #include <xmscore/stl/vector.h>
 #include <xmscore/misc/base_macros.h>
 #include <xmscore/misc/boost_defines.h>
@@ -21,7 +22,7 @@ namespace xms
 //----- Structs / Classes ------------------------------------------------------
 /// \brief Redistributes the point locations on a polyline based on a size
 /// \see GmPolyLinePtRedistributerImpl
-class GmPolyLinePtRedistributer
+class XMSGRID_EXPORT GmPolyLinePtRedistributer
 {
 public:
   static BSHP<GmPolyLinePtRedistributer> New();

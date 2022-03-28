@@ -8,6 +8,7 @@
 
 //----- Included files ---------------------------------------------------------
 
+#include <xmsgrid/xmsgrid_export.h>
 // 3. Standard library headers
 #include <vector>
 
@@ -34,7 +35,7 @@ class Observer;
 //----- Function prototypes ----------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class TrAutoFixFourTrianglePts
+class XMSGRID_EXPORT TrAutoFixFourTrianglePts
 {
 public:
   static BSHP<TrAutoFixFourTrianglePts> New();

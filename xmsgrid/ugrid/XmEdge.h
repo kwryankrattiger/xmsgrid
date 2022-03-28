@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <utility>
@@ -30,7 +31,7 @@ namespace xms
 //----- Structs / Classes ------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class XmEdge
+class XMSGRID_EXPORT XmEdge
 {
 public:
   XmEdge();
@@ -53,6 +54,6 @@ private:
 };
 
 //----- Function prototypes ----------------------------------------------------
-bool XmEdgesEquivalent(const XmEdge& a_edge1, const XmEdge& a_edge2);
+XMSGRID_EXPORT bool XmEdgesEquivalent(const XmEdge& a_edge1, const XmEdge& a_edge2);
 
 } // namespace xms

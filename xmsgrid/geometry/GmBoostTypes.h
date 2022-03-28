@@ -10,6 +10,7 @@
 //----- Included files ---------------------------------------------------------
 
 #include <xmscore/points/ptsfwd.h>
+#include <xmsgrid/xmsgrid_export.h>
 #pragma warning(push)
 #pragma warning(disable : 4512) // Boost code: no assignment operator
 #include <boost/geometry/core/cs.hpp>

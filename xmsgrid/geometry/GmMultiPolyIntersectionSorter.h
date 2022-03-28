@@ -12,6 +12,7 @@
 #include <vector>
 
 // 5. Shared code headers
+#include <xmsgrid/xmsgrid_export.h>
 #include <xmscore/points/ptsfwd.h>
 
 //----- Namespace --------------------------------------------------------------
@@ -28,7 +29,7 @@ struct GmMultiPolyIntersectorData;
 /// \class GmMultiPolyIntersectionSorter
 /// \brief Base class for sorting intersections from GmMultiPolyIntersector
 /// \see GmMultiPolyIntersectionSorterTerse
-class GmMultiPolyIntersectionSorter
+class XMSGRID_EXPORT GmMultiPolyIntersectionSorter
 {
 public:
   virtual ~GmMultiPolyIntersectionSorter() {}

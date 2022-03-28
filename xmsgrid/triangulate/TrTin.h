@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <iosfwd> // forward declaration of ostream
@@ -31,7 +32,7 @@ class access;
 namespace xms
 {
 ////////////////////////////////////////////////////////////////////////////////
-class TrTin
+class XMSGRID_EXPORT TrTin
 {
   /// \cond
   friend class boost::serialization::access;
@@ -113,7 +114,7 @@ private:
 
 //----- Global methods ---------------------------------------------------------
 
-void trRenumberOnDelete(const SetInt& a_deleting, VecInt& a_vec);
+XMSGRID_EXPORT void trRenumberOnDelete(const SetInt& a_deleting, VecInt& a_vec);
 
 } // namespace xms
 

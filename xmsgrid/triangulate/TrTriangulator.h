@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Include Files ----------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard Library Headers
 
@@ -29,7 +30,7 @@ namespace xms
 //----- Typdefs / Classes ------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class TrTriangulator
+class XMSGRID_EXPORT TrTriangulator
 {
 public:
   TrTriangulator();

@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 //----- Include Files ----------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard Library Headers
 
@@ -31,6 +32,6 @@ class TrTriangulator;
 
 //----- Function Prototypes ----------------------------------------------------
 
-bool trTriangulateIt(TrTriangulator& a_Client);
+XMSGRID_EXPORT bool trTriangulateIt(TrTriangulator& a_Client);
 
 } // namespace xms

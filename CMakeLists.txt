@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.2)
+cmake_minimum_required(VERSION 3.12.2)
 cmake_policy(SET CMP0015 NEW) # Link Directory Pathing
 set(CMAKE_DEBUG_POSTFIX _d)
 
@@ -13,20 +13,21 @@ endif ()
 message("CMAKE_CXX_STANDARD: ${CMAKE_CXX_STANDARD}")
 
 if (APPLE)
-  set(CMAKE_POSITION_INDEPENDENT_CODE False)
+  set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
 else ()
-  set(CMAKE_POSITION_INDEPENDENT_CODE True)
+  set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 endif ()
 
 project(xmsgrid C CXX)
 
 include(GNUInstallDirs)
+include(GenerateExportHeader)
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Enable/Disable building shared libraries")
 set(BUILD_TESTING OFF CACHE BOOL "Enable/Disable testing")
 set(XMS_BUILD_MODE "CONAN" CACHE STRING "Target packing system to build for.")
 set_property(CACHE XMS_BUILD_MODE PROPERTY STRINGS "CONAN;CONDA;CMAKE")
-set(XMS_BUILD NO CACHE BOOL "Set this if you want to use this package with XMS.")
+set(XMS_BUILD ON CACHE BOOL "Set this if you want to use this package with XMS.")
 set(CONDA_PREFIX "" CACHE PATH "Path to the conda environment used to build.")
 set(ENABLE_PYTHON OFF CACHE BOOL "Set this if you want to build the python bindings.")
 set(PYTHON_TARGET_VERSION 3.6 CACHE STRING "Version of python to link to for python wrapping.")
@@ -36,6 +37,9 @@ set(XMS_VERSION "5.2.0" CACHE STRING "Library Version")
 add_definitions(-DXMS_VERSION=\"${XMS_VERSION}\")
 
 if (XMS_BUILD_MODE STREQUAL "CMAKE")
+  if (PYTHON_TARGET_VERSION VERSION_LESS 3)
+    message(FATAL_ERROR "XMS requires Python >= 3.0")
+  endif ()
   if (BUILD_SHARED_LIBS)
     set(Boost_USE_STATIC_LIBS OFF)
   else ()
@@ -44,9 +48,17 @@ if (XMS_BUILD_MODE STREQUAL "CMAKE")
   find_package(Boost QUIET REQUIRED log_setup log system filesystem serialization timer)
   find_package(XMSCore REQUIRED
     NAMES xms xmscore)
-  list(APPEND EXT_INCLUDE_DIRS ${XMSCore_INCLUDE_DIRS};${Boost_INCLUDE_DIRS})
+  find_package(ZLIB QUIET REQUIRED)
+  list(APPEND EXT_INCLUDE_DIRS ${XMSCore_INCLUDE_DIRS};${Boost_INCLUDE_DIRS};${ZLIB_INCLUDE_DIRS})
   list(APPEND EXT_LIB_DIRS ${XMSCore_LIBRARY_DIRS};${Boost_LIBRARY_DIRS})
-  list(APPEND EXT_LIBS ${XMSCore_LIBRARIES};${Boost_LIBRARIES};z)
+  list(APPEND EXT_LIBS ${XMSCore_LIBRARIES};${Boost_LIBRARIES};${ZLIB_LIBRARIES})
+  if (WIN32)
+    if (XMS_BUILD)
+      add_definitions(/Zc:wchar_t)  # Treat wchar_t as built-in type
+      add_definitions(/D _WIN32_WINNT=0x0501)  # Windows XP and higher
+    endif ()
+    add_definitions(/D BOOST_ALL_NO_LIB)
+  endif ()
 elseif (XMS_BUILD_MODE STREQUAL "CONDA")
   include(${CMAKE_CURRENT_LIST_DIR}/condabuildinfo.cmake)
 else () # If we are using conan
@@ -58,7 +70,7 @@ else () # If we are using conan
   list(APPEND EXT_LIBS ${CONAN_LIBS})
 endif ()
 
-if (WIN32)
+if (WIN32 AND XMS_BUILD_MODE STREQUAL "CONAN")
     string(COMPARE EQUAL "${CONAN_SETTINGS_COMPILER_RUNTIME}" "MT" USES_MT)
     if (NOT USES_MT)
         string(COMPARE EQUAL "${CONAN_SETTINGS_COMPILER_RUNTIME}" "MTd" USES_MT)
@@ -98,23 +110,23 @@ if (ENABLE_PYTHON)
         endif ()
 
         find_package(PythonLibsNew ${PYTHON_TARGET_VERSION} EXACT REQUIRED)
+
+        list(APPEND EXT_INCLUDE_DIRS
+            ${pybind11_INCLUDE_DIR}
+        )
+
+        message("PYTHON_INCLUDE: ${PYTHON_INCLUDE_DIRS}")
+        message("PYTHON_LIBS: ${PYTHON_LIBRARIES}")
+
+        list(APPEND EXT_INCLUDE_DIRS
+          ${PYTHON_INCLUDE_DIRS}
+        )
     else ()
-        # New method does not require PythonLibsNew
-        find_package(Python REQUIRED COMPONENTS Interpreter)
-        set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})
-        find_package(pybind11 CONFIG REQUIRED)
+      # New method does not require PythonLibsNew
+      find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+      find_package(pybind11 CONFIG REQUIRED)
+      list(APPEND EXT_LIBS pybind11::pybind11 Python3::Python)
     endif ()
-
-    list(APPEND EXT_INCLUDE_DIRS
-        ${pybind11_INCLUDE_DIR}
-    )
-
-    message("PYTHON_INCLUDE: ${PYTHON_INCLUDE_DIRS}")
-    message("PYTHON_LIBS: ${PYTHON_LIBRARIES}")
-
-    list(APPEND EXT_INCLUDE_DIRS
-      ${PYTHON_INCLUDE_DIRS}
-    )
 endif ()
 
 include_directories(${CMAKE_CURRENT_LIST_DIR})
@@ -263,6 +275,14 @@ target_link_libraries(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   ${CMAKE_THREAD_LIBS_INIT}
 )
+generate_export_header(${PROJECT_NAME} EXPORT_FILE_NAME xmsgrid/xmsgrid_export.h)
+target_include_directories(${PROJECT_NAME}
+  PUBLIC
+    $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+install(FILES ${PROJECT_BINARY_DIR}/xmsgrid/xmsgrid_export.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xmsgrid
+  )
 if (UNIX AND NOT APPLE)
     target_link_libraries(${PROJECT_NAME} rt)
 endif ()

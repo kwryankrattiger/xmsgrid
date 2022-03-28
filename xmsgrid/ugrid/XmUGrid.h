@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 #include <memory>
@@ -112,7 +113,7 @@ enum XmUGridFaceOrientation {
 //----- Structs / Classes ------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-class XmUGrid
+class XMSGRID_EXPORT XmUGrid
 {
 public:
   static std::shared_ptr<XmUGrid> New(const VecPt3d& a_locations, const VecInt& a_cellstream);
@@ -197,23 +198,23 @@ private:
 };
 
 //----- Function prototypes ----------------------------------------------------
-std::shared_ptr<XmUGrid> TEST_XmUGrid1Left90Tri();
-std::shared_ptr<XmUGrid> TEST_XmUGridSimpleQuad();
-std::shared_ptr<XmUGrid> TEST_XmUGrid2dLinear();
-std::shared_ptr<XmUGrid> TEST_XmUGrid3dLinear();
-std::shared_ptr<XmUGrid> TEST_XmUGridHexagonalPolyhedron();
-std::shared_ptr<XmUGrid> TEST_XmUBuildQuadUGrid(int a_rows, int a_cols);
-std::shared_ptr<XmUGrid> TEST_XmUBuildQuadUGrid(int a_rows, int a_cols, const xms::Pt3d& a_origin);
-std::shared_ptr<XmUGrid> TEST_XmUBuildHexahedronUgrid(int a_rows, int a_cols, int a_lays);
-std::shared_ptr<XmUGrid> TEST_XmUBuildHexahedronUgrid(int a_rows,
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUGrid1Left90Tri();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUGridSimpleQuad();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUGrid2dLinear();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUGrid3dLinear();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUGridHexagonalPolyhedron();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildQuadUGrid(int a_rows, int a_cols);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildQuadUGrid(int a_rows, int a_cols, const xms::Pt3d& a_origin);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildHexahedronUgrid(int a_rows, int a_cols, int a_lays);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildHexahedronUgrid(int a_rows,
                                                 int a_cols,
                                                 int a_lays,
                                                 const xms::Pt3d& a_origin);
-std::shared_ptr<XmUGrid> TEST_XmUBuildPolyhedronUgrid(int a_rows, int a_cols, int a_lays);
-std::shared_ptr<XmUGrid> TEST_XmUBuildPolyhedronUgrid(int a_rows,
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildPolyhedronUgrid(int a_rows, int a_cols, int a_lays);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuildPolyhedronUgrid(int a_rows,
                                                 int a_cols,
                                                 int a_lays,
                                                 const xms::Pt3d& a_origin);
-std::shared_ptr<XmUGrid> TEST_XmUBuild3DChevronUgrid();
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> TEST_XmUBuild3DChevronUgrid();
 
 } // namespace xms

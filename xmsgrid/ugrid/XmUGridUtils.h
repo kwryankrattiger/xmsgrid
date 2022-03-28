@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 // 3. Standard library headers
 
@@ -34,10 +35,10 @@ class XmUGrid;
 //----- Function prototypes ----------------------------------------------------
 
 // IO
-std::shared_ptr<XmUGrid> XmReadUGridFromAsciiFile(const std::string& a_filePath);
-std::shared_ptr<XmUGrid> XmReadUGridFromStream(std::istream& a_istream);
-void XmWriteUGridToAsciiFile(std::shared_ptr<XmUGrid> a_ugrid, const std::string& a_filePath);
-void XmWriteUGridToStream(std::shared_ptr<XmUGrid> a_ugrid, std::ostream& a_outStream);
-void XmWriteUGridToStream(const XmUGrid& a_ugrid, std::ostream& a_outStream, bool a_binary = false);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> XmReadUGridFromAsciiFile(const std::string& a_filePath);
+XMSGRID_EXPORT std::shared_ptr<XmUGrid> XmReadUGridFromStream(std::istream& a_istream);
+XMSGRID_EXPORT void XmWriteUGridToAsciiFile(std::shared_ptr<XmUGrid> a_ugrid, const std::string& a_filePath);
+XMSGRID_EXPORT void XmWriteUGridToStream(std::shared_ptr<XmUGrid> a_ugrid, std::ostream& a_outStream);
+XMSGRID_EXPORT void XmWriteUGridToStream(const XmUGrid& a_ugrid, std::ostream& a_outStream, bool a_binary = false);
 
 } // namespace xms

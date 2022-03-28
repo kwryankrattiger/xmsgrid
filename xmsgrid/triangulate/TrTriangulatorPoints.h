@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 //----- Included files ---------------------------------------------------------
+#include <xmsgrid/xmsgrid_export.h>
 
 #include <xmscore/stl/vector.h> // for VecInt
 #include <xmsgrid/triangulate/TrTriangulator.h>
@@ -22,7 +23,7 @@ namespace xms
 class Observer;
 
 ////////////////////////////////////////////////////////////////////////////////
-class TrTriangulatorPoints : public TrTriangulator
+class XMSGRID_EXPORT TrTriangulatorPoints : public TrTriangulator
 {
 public:
   TrTriangulatorPoints(const VecPt3d& a_pts, VecInt& a_tris, VecInt2d* a_trisAdjToPts = nullptr);

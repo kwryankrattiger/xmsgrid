@@ -14,6 +14,7 @@
 
 // 5. Shared Headers
 #include <xmscore/points/pt.h>
+#include <xmsgrid/xmsgrid_export.h>
 
 // 6. Non-shared Headers
 
@@ -33,7 +34,7 @@ namespace xms
 class GmExtents3d; // forward declaration cause we use it in GmExtents2d ctor
 
 ////////////////////////////////////////////////////////////////////////////////
-class GmExtents2d
+class XMSGRID_EXPORT GmExtents2d
 {
   /// \cond
   friend class boost::serialization::access;
@@ -104,7 +105,7 @@ void GmExtents2d::serialize(Archive& archive, const unsigned int version)
 } // GmExtents2d::serialize
 
 ////////////////////////////////////////////////////////////////////////////////
-class GmExtents3d
+class XMSGRID_EXPORT GmExtents3d
 {
   //#ifdef CXX_TEST
   // friend class GmExtents3dUnitTests; ///< For unit tests
